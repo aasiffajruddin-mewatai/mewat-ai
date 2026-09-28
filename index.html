@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEWAT AI</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0b1020;
+      --sidebar: #080d1a;
+      --header: #0d1324;
+      --input: #151c2e;
+      --border: #26304a;
+      --text: #f4f7ff;
+      --muted: #9aa6bd;
+      --accent: #6d5dfc;
+      --accent2: #3b82f6;
+      --hover: #182139;
+      --user: #25304a;
+      --code: #080b12;
+    }
+
+    body.theme-two {
+      --bg: #ffffff;
+      --sidebar: #f7f7f8;
+      --header: #ffffff;
+      --input: #f4f4f5;
+      --border: #e5e5e5;
+      --text: #202123;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent2: #4f46e5;
+      --hover: #ececef;
+      --user: #f0f0f0;
+      --code: #111827;
+    }
+
+    body.light {
+      --bg: #f5f7fb;
+      --sidebar: #ffffff;
+      --header: #ffffff;
+      --input: #ffffff;
+      --border: #dfe3eb;
+      --text: #171b25;
+      --muted: #697386;
+      --accent: #5b4df6;
+      --accent2: #3478f6;
+      --hover: #edf0f7;
+      --user: #e9edf5;
+      --code: #111827;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 270px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      transition: transform 0.25s ease;
+    }
+
+    .sidebar-top {
+      padding: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 18px;
+    }
+
+    .mewat-logo-small {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: var(--sidebar);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 18px rgba(37,217,255,.12);
+    }
+
+    .mewat-logo-small svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      line-height: 1.05;
+    }
+
+    .brand-creator {
+      margin-top: 4px;
+      color: var(--accent);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .20em;
+      text-transform: uppercase;
+    }
+
+    .new-chat-btn {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 11px 13px;
+      text-align: left;
+      transition: 0.2s;
+    }
+
+    .new-chat-btn:hover {
+      background: var(--hover);
+      border-color: var(--accent);
+    }
+
+    .history-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 16px 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .history-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 4px 10px 15px;
+    }
+
+    .history-list::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .history-list::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 10px;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 9px;
+      margin-bottom: 3px;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      text-align: left;
+      transition: 0.2s;
+    }
+
+    .history-item:hover,
+    .history-item.active {
+      background: var(--hover);
+    }
+
+    .history-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .history-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .history-delete {
+      opacity: 0;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      padding: 3px;
+    }
+
+    .history-item:hover .history-delete {
+      opacity: 1;
+    }
+
+    .history-delete:hover {
+      color: #ef4444;
+    }
+
+    .sidebar-bottom {
+      border-top: 1px solid var(--border);
+      padding: 10px;
+    }
+
+    .sidebar-option {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      border-radius: 8px;
+      text-align: left;
+      margin-bottom: 3px;
+    }
+
+    .sidebar-option:hover {
+      background: var(--hover);
+    }
+
+    .main {
+      margin-left: 270px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+    }
+
+    .header {
+      height: 62px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--border);
+      background: var(--header);
+      gap: 12px;
+    }
+
+    .hamburger {
+      display: none;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 23px;
+    }
+
+    .header-title {
+      font-size: 17px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .header-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+    }
+
+    .header-btn:hover {
+      background: var(--hover);
+      border-color: var(--accent);
+    }
+
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding: 30px 20px 130px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .welcome {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .welcome-logo {
+      width: 108px;
+      height: 108px;
+      border-radius: 28px;
+      background: var(--sidebar);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow:
+        0 18px 50px rgba(0,0,0,.14),
+        0 0 35px rgba(37,217,255,.10);
+    }
+
+    .welcome-logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .welcome h1 {
+      font-size: 32px;
+      letter-spacing: -.025em;
+      margin-bottom: 10px;
+    }
+
+    .welcome h1::after {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 3px;
+      margin: 12px auto 0;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: .8;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-top: 5px;
+    }
+
+    .creator-line {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+
+    .creator-line strong {
+      color: var(--accent);
+      letter-spacing: .16em;
+    }
+
+    .suggestions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: min(700px, 100%);
+      margin-top: 28px;
+    }
+
+    .suggestion {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      transition: transform .18s ease, border-color .18s ease,
+                  background .18s ease, box-shadow .18s ease;
+    }
+
+    .suggestion:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--hover);
+      box-shadow: 0 8px 24px rgba(0,0,0,.10);
+    }
+
+    .message {
+      display: flex;
+      gap: 14px;
+      margin: 25px 0;
+      line-height: 1.7;
+      font-size: 15.5px;
+    }
+
+    .message.user {
+      justify-content: flex-end;
+    }
+
+    .message.user .message-content {
+      max-width: 75%;
+      background: var(--user);
+      border-radius: 18px;
+      padding: 11px 16px;
+    }
+
+    .message.ai {
+      align-items: flex-start;
+    }
+
+    .ai-avatar {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .message-content {
+      min-width: 0;
+      max-width: 800px;
+    }
+
+    .message-content p {
+      margin: 0 0 12px;
+    }
+
+    .message-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .message-content ul,
+    .message-content ol {
+      margin: 8px 0 12px 22px;
+    }
+
+    .message-content h1,
+    .message-content h2,
+    .message-content h3 {
+      margin: 18px 0 9px;
+    }
+
+    .message-content code {
+      background: var(--hover);
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    .message-content pre {
+      background: var(--code);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+
+    .message-content pre code {
+      background: transparent;
+      padding: 0;
+    }
+
+    .message-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+      color: var(--muted);
+      margin: 10px 0;
+    }
+
+    .typing {
+      display: flex;
+      gap: 5px;
+      padding: 10px 0;
+    }
+
+    .typing span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted);
+      animation: typing 1.2s infinite ease-in-out;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+      }
+
+      30% {
+        transform: translateY(-5px);
+        opacity: 1;
+      }
+    }
+
+    .input-area {
+      position: fixed;
+      left: 270px;
+      right: 0;
+      bottom: 0;
+      padding: 15px 20px 20px;
+      background: linear-gradient(
+        to top,
+        var(--bg) 70%,
+        transparent
+      );
+    }
+
+    .input-wrap {
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .input-box {
+      min-height: 58px;
+      display: flex;
+      align-items: flex-end;
+      gap: 7px;
+      padding: 9px 10px;
+      background: var(--input);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    .input-box:focus-within {
+      border-color: var(--accent);
+    }
+
+    .plus-btn,
+    .mic-btn,
+    .send-btn {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 21px;
+    }
+
+    .plus-btn:hover,
+    .mic-btn:hover {
+      background: var(--hover);
+    }
+
+    .send-btn {
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+
+    .send-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    .send-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    #messageInput {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      resize: none;
+      background: transparent;
+      color: var(--text);
+      padding: 9px 4px;
+      max-height: 150px;
+      font-size: 15px;
+    }
+
+    #messageInput::placeholder {
+      color: var(--muted);
+    }
+
+    .input-footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 7px;
+    }
+
+    .plus-menu {
+      position: absolute;
+      left: 0;
+      bottom: 70px;
+      width: 245px;
+      background: var(--header);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 7px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 200;
+    }
+
+    .plus-menu.show {
+      display: block;
+      animation: menuIn 0.15s ease;
+    }
+
+    @keyframes menuIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .plus-option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      border-radius: 9px;
+      text-align: left;
+    }
+
+    .plus-option:hover {
+      background: var(--hover);
+    }
+
+    .plus-option-icon {
+      width: 30px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .plus-option small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 500;
+      padding: 20px;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(420px, 100%);
+      background: var(--header);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .modal h3 {
+      margin-bottom: 16px;
+    }
+
+    .theme-option {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 14px;
+      border-radius: 12px;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    .theme-option:hover {
+      background: var(--hover);
+    }
+
+    .theme-option small {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .modal-close {
+      width: 100%;
+      border: none;
+      background: var(--hover);
+      color: var(--text);
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 90px;
+      transform: translateX(-50%);
+      background: #111827;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 9px;
+      display: none;
+      z-index: 800;
+      font-size: 13px;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    @media (max-width: 800px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .input-area {
+        left: 0;
+      }
+
+      .suggestions {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome h1 {
+        font-size: 27px;
+      }
+
+      .chat-box {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .message.user .message-content {
+        max-width: 85%;
+      }
+
+      .welcome-logo {
+        width: 90px;
+        height: 90px;
+      }
+
+      .brand-creator {
+        font-size: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <div class="brand">
+
+        <div class="mewat-logo-small" aria-label="MEWAT AI logo">
+          <svg viewBox="0 0 100 100" role="img">
+            <defs>
+              <linearGradient
+                id="mewatSmallGradient"
+                x1="10%"
+                y1="10%"
+                x2="90%"
+                y2="90%">
+                <stop offset="0%" stop-color="#25d9ff"/>
+                <stop offset="52%" stop-color="#5d7cff"/>
+                <stop offset="100%" stop-color="#9a5cff"/>
+              </linearGradient>
+            </defs>
+
+            <circle
+              cx="50"
+              cy="50"
+              r="44"
+              fill="#070b16"
+              stroke="url(#mewatSmallGradient)"
+              stroke-width="5"/>
+
+            <!-- MI LOGO -->
+            <path
+              d="M27 68 L27 32 L48 32 L48 68
+                 M52 32 L73 32 L73 68"
+              fill="none"
+              stroke="url(#mewatSmallGradient)"
+              stroke-width="9"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+
+            <circle
+              cx="50"
+              cy="50"
+              r="5"
+              fill="#ffffff"/>
+          </svg>
+        </div>
+
+        <div class="brand-copy">
+          <div class="brand-name">MEWAT AI</div>
+          <div class="brand-creator">BY AASIF FAJRUDDIN</div>
+        </div>
+
+      </div>
+
+      <button class="new-chat-btn" id="sidebarNewChatBtn">
+        ＋ New Chat
+      </button>
+
+    </div>
+
+    <div class="history-title">
+      <span>Chat History</span>
+      <span id="historyCount">0</span>
+    </div>
+
+    <div class="history-list" id="chatList"></div>
+
+    <div class="sidebar-bottom">
+
+      <button class="sidebar-option" id="themeButton">
+        🎨 Theme
+      </button>
+
+      <button class="sidebar-option" id="darkModeButton">
+        🌙 Dark / Light
+      </button>
+
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="header">
+
+      <button class="hamburger" id="hamburgerBtn">
+        ☰
+      </button>
+
+      <div class="header-title" id="headerTitle">
+        MEWAT AI
+      </div>
+
+      <select
+        id="languageSelect"
+        title="Language"
+        style="
+          border:1px solid var(--border);
+          background:var(--input);
+          color:var(--text);
+          border-radius:8px;
+          padding:7px;
+          max-width:110px;
+        "
+      >
+        <option value="auto">Auto</option>
+        <option value="hi-IN">हिन्दी</option>
+        <option value="en-US">English</option>
+        <option value="ur-PK">اردو</option>
+        <option value="ar-SA">العربية</option>
+        <option value="bn-BD">বাংলা</option>
+        <option value="pa-IN">ਪੰਜਾਬੀ</option>
+        <option value="gu-IN">ગુજરાતી</option>
+        <option value="mr-IN">मराठी</option>
+        <option value="ta-IN">தமிழ்</option>
+        <option value="te-IN">తెలుగు</option>
+        <option value="kn-IN">ಕನ್ನಡ</option>
+        <option value="ml-IN">മലയാളം</option>
+        <option value="es-ES">Español</option>
+        <option value="fr-FR">Français</option>
+        <option value="de-DE">Deutsch</option>
+        <option value="it-IT">Italiano</option>
+      </select>
+
+    </header>
+        </header>
+
+    <!-- ================= CHAT ================= -->
+
+    <section class="chat-box" id="chatBox">
+
+      <div class="chat-content" id="chatContent">
+
+        <div class="welcome" id="welcomeScreen">
+
+          <div class="welcome-logo" aria-label="MEWAT AI logo">
+
+            <svg viewBox="0 0 100 100" role="img">
+
+              <defs>
+                <linearGradient
+                  id="mewatWelcomeGradient"
+                  x1="10%"
+                  y1="10%"
+                  x2="90%"
+                  y2="90%">
+                  <stop offset="0%" stop-color="#25d9ff"/>
+                  <stop offset="52%" stop-color="#5d7cff"/>
+                  <stop offset="100%" stop-color="#9a5cff"/>
+                </linearGradient>
+              </defs>
+
+              <circle
+                cx="50"
+                cy="50"
+                r="44"
+                fill="#070b16"
+                stroke="url(#mewatWelcomeGradient)"
+                stroke-width="5"/>
+
+              <!-- MI LOGO -->
+              <path
+                d="M27 68 L27 32 L48 32 L48 68
+                   M52 32 L73 32 L73 68"
+                fill="none"
+                stroke="url(#mewatWelcomeGradient)"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+              <circle
+                cx="50"
+                cy="50"
+                r="5"
+                fill="#ffffff"/>
+
+            </svg>
+
+          </div>
+
+          <h1>MEWAT AI</h1>
+
+          <p>
+            Your intelligent AI assistant for questions, learning,
+            coding, ideas and everyday help.
+          </p>
+
+          <div class="creator-line">
+            Created by
+            <strong>AASIF FAJRUDDIN</strong>
+          </div>
+
+          <div class="suggestions">
+
+            <button class="suggestion">
+              💡 Explain something to me
+            </button>
+
+            <button class="suggestion">
+              📝 Help me write something
+            </button>
+
+            <button class="suggestion">
+              💻 Help me with coding
+            </button>
+
+            <button class="suggestion">
+              📚 Help me learn something
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= INPUT ================= -->
+
+    <div class="input-area">
+
+      <div class="input-wrap">
+
+        <div class="plus-menu" id="plusMenu">
+
+          <button class="plus-option" id="uploadImageBtn">
+
+            <span class="plus-option-icon">🖼️</span>
+
+            <span>
+              Image
+              <small>Upload an image</small>
+            </span>
+
+          </button>
+
+          <button class="plus-option" id="uploadFileBtn">
+
+            <span class="plus-option-icon">📎</span>
+
+            <span>
+              File
+              <small>Upload a file</small>
+            </span>
+
+          </button>
+
+          <button class="plus-option" id="clearChatBtn">
+
+            <span class="plus-option-icon">🗑️</span>
+
+            <span>
+              Clear Chat
+              <small>Start fresh</small>
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div class="input-box">
+
+          <button
+            class="plus-btn"
+            id="plusBtn"
+            title="More options">
+            +
+          </button>
+
+          <textarea
+            id="messageInput"
+            rows="1"
+            placeholder="Message MEWAT AI..."
+            autocomplete="off">
+          </textarea>
+
+          <button
+            class="mic-btn"
+            id="micBtn"
+            title="Voice input">
+            🎙️
+          </button>
+
+          <button
+            class="send-btn"
+            id="sendBtn"
+            title="Send"
+            disabled>
+            ➤
+          </button>
+
+        </div>
+
+        <div class="input-footer">
+          MEWAT AI can make mistakes. Check important information.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= THEME MODAL ================= -->
+
+    <div class="modal-overlay" id="themeModal">
+
+      <div class="modal">
+
+        <h3>Choose Theme</h3>
+
+        <button
+          class="theme-option"
+          data-theme="default">
+
+          🌌 Dark Blue
+
+          <small>
+            Modern dark MEWAT AI theme
+          </small>
+
+        </button>
+
+        <button
+          class="theme-option"
+          data-theme="theme-two">
+
+          ☀️ White
+
+          <small>
+            Clean white theme
+          </small>
+
+        </button>
+
+        <button
+          class="theme-option"
+          data-theme="light">
+
+          🌤️ Light
+
+          <small>
+            Soft light theme
+          </small>
+
+        </button>
+
+        <button
+          class="modal-close"
+          id="themeModalClose">
+
+          Close
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div class="toast" id="toast"></div>
+
+
+    <!-- ================= HIDDEN FILE INPUTS ================= -->
+
+    <input
+      type="file"
+      id="imageInput"
+      accept="image/*"
+      hidden>
+
+    <input
+      type="file"
+      id="fileInput"
+      hidden>
+
+
+    <script>
+
+      /* =====================================================
+         MEWAT AI FRONTEND
+         Founder: AASIF FAJRUDDIN
+      ===================================================== */
+
+
+      const API_BASE = window.location.origin;
+
+
+      /* ================= ELEMENTS ================= */
+
+      const sidebar =
+        document.getElementById("sidebar");
+
+      const hamburgerBtn =
+        document.getElementById("hamburgerBtn");
+
+      const sidebarNewChatBtn =
+        document.getElementById("sidebarNewChatBtn");
+
+      const headerTitle =
+        document.getElementById("headerTitle");
+
+      const chatBox =
+        document.getElementById("chatBox");
+
+      const chatContent =
+        document.getElementById("chatContent");
+
+      const welcomeScreen =
+        document.getElementById("welcomeScreen");
+
+      const messageInput =
+        document.getElementById("messageInput");
+
+      const sendBtn =
+        document.getElementById("sendBtn");
+
+      const micBtn =
+        document.getElementById("micBtn");
+
+      const plusBtn =
+        document.getElementById("plusBtn");
+
+      const plusMenu =
+        document.getElementById("plusMenu");
+
+      const themeButton =
+        document.getElementById("themeButton");
+
+      const darkModeButton =
+        document.getElementById("darkModeButton");
+
+      const themeModal =
+        document.getElementById("themeModal");
+
+      const themeModalClose =
+        document.getElementById("themeModalClose");
+
+      const chatList =
+        document.getElementById("chatList");
+
+      const historyCount =
+        document.getElementById("historyCount");
+
+      const toast =
+        document.getElementById("toast");
+
+      const languageSelect =
+        document.getElementById("languageSelect");
+
+      const imageInput =
+        document.getElementById("imageInput");
+
+      const fileInput =
+        document.getElementById("fileInput");
+
+      const uploadImageBtn =
+        document.getElementById("uploadImageBtn");
+
+      const uploadFileBtn =
+        document.getElementById("uploadFileBtn");
+
+      const clearChatBtn =
+        document.getElementById("clearChatBtn");
+
+
+      /* ================= STATE ================= */
+
+      let messages = [];
+
+      let chats = [];
+
+      let currentChatId = null;
+
+      let isLoading = false;
+
+      let selectedLanguage = "auto";
+
+
+      /* ================= STORAGE ================= */
+
+      function loadStorage() {
+
+        try {
+
+          chats =
+            JSON.parse(
+              localStorage.getItem("mewat_ai_chats")
+            ) || [];
+
+        } catch (error) {
+
+          chats = [];
+
+        }
+
+        renderHistory();
+
+      }
+
+
+      function saveChats() {
+
+        localStorage.setItem(
+          "mewat_ai_chats",
+          JSON.stringify(chats)
+        );
+
+      }
+
+
+      /* ================= TOAST ================= */
+
+      function showToast(message) {
+
+        toast.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+
+          toast.classList.remove("show");
+
+        }, 2200);
+
+      }
+
+
+      /* ================= MOBILE SIDEBAR ================= */
+
+      hamburgerBtn.addEventListener(
+        "click",
+        () => {
+
+          sidebar.classList.toggle("open");
+
+        }
+      );
+
+
+      /* ================= PLUS MENU ================= */
+
+      plusBtn.addEventListener(
+        "click",
+        (event) => {
+
+          event.stopPropagation();
+
+          plusMenu.classList.toggle("show");
+
+        }
+      );
+
+
+      document.addEventListener(
+        "click",
+        (event) => {
+
+          if (
+            !plusMenu.contains(event.target) &&
+            event.target !== plusBtn
+          ) {
+
+            plusMenu.classList.remove("show");
+
+          }
+
+        }
+      );
+
+
+      /* ================= NEW CHAT ================= */
+
+      function newChat() {
+
+        messages = [];
+
+        currentChatId = null;
+
+        chatContent.innerHTML = "";
+
+        chatContent.appendChild(
+          createWelcomeScreen()
+        );
+
+        headerTitle.textContent =
+          "MEWAT AI";
+
+        messageInput.value = "";
+
+        updateSendButton();
+
+        sidebar.classList.remove("open");
+
+      }
+
+
+      sidebarNewChatBtn.addEventListener(
+        "click",
+        newChat
+      );
+
+
+      function createWelcomeScreen() {
+
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.className = "welcome";
+
+        wrapper.innerHTML = `
+
+          <div class="welcome-logo">
+
+            <svg viewBox="0 0 100 100">
+
+              <defs>
+                <linearGradient
+                  id="dynamicMewatGradient"
+                  x1="10%"
+                  y1="10%"
+                  x2="90%"
+                  y2="90%">
+
+                  <stop offset="0%"
+                        stop-color="#25d9ff"/>
+
+                  <stop offset="52%"
+                        stop-color="#5d7cff"/>
+
+                  <stop offset="100%"
+                        stop-color="#9a5cff"/>
+
+                </linearGradient>
+              </defs>
+
+              <circle
+                cx="50"
+                cy="50"
+                r="44"
+                fill="#070b16"
+                stroke="url(#dynamicMewatGradient)"
+                stroke-width="5"/>
+
+              <path
+                d="M27 68 L27 32 L48 32 L48 68
+                   M52 32 L73 32 L73 68"
+                fill="none"
+                stroke="url(#dynamicMewatGradient)"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+              <circle
+                cx="50"
+                cy="50"
+                r="5"
+                fill="#ffffff"/>
+
+            </svg>
+
+          </div>
+
+          <h1>MEWAT AI</h1>
+
+          <p>
+            Your intelligent AI assistant for questions,
+            learning, coding, ideas and everyday help.
+          </p>
+
+          <div class="creator-line">
+            Created by
+            <strong>AASIF FAJRUDDIN</strong>
+          </div>
+
+          <div class="suggestions">
+
+            <button class="suggestion">
+              💡 Explain something to me
+            </button>
+
+            <button class="suggestion">
+              📝 Help me write something
+            </button>
+
+            <button class="suggestion">
+              💻 Help me with coding
+            </button>
+
+            <button class="suggestion">
+              📚 Help me learn something
+            </button>
+
+          </div>
+
+        `;
+
+        wrapper
+          .querySelectorAll(".suggestion")
+          .forEach(button => {
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                messageInput.value =
+                  button.textContent.trim();
+
+                updateSendButton();
+
+                messageInput.focus();
+
+              }
+            );
+
+          });
+
+        return wrapper;
+
+      }
+
+
+      /* ================= SEND BUTTON ================= */
+
+      function updateSendButton() {
+
+        sendBtn.disabled =
+          isLoading ||
+          !messageInput.value.trim();
+
+      }
+
+
+      messageInput.addEventListener(
+        "input",
+        () => {
+
+          updateSendButton();
+
+          messageInput.style.height = "auto";
+
+          messageInput.style.height =
+            Math.min(
+              messageInput.scrollHeight,
+              150
+            ) + "px";
+
+        }
+      );
+
+
+      messageInput.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Enter" &&
+            !event.shiftKey
+          ) {
+
+            event.preventDefault();
+
+            if (!sendBtn.disabled) {
+
+              sendMessage();
+
+            }
+
+          }
+
+        }
+      );
+
+
+      sendBtn.addEventListener(
+        "click",
+        sendMessage
+      );
+
+
+      /* ================= ADD MESSAGE ================= */
+
+      function addMessage(role, content) {
+
+        if (welcomeScreen) {
+
+          welcomeScreen.remove();
+
+        }
+
+        const message =
+          document.createElement("div");
+
+        message.className =
+          `message ${role}`;
+
+        if (role === "ai") {
+
+          message.innerHTML = `
+
+            <div class="ai-avatar">
+              MI
+            </div>
+
+            <div class="message-content"></div>
+
+          `;
+
+          const contentBox =
+            message.querySelector(
+              ".message-content"
+            );
+
+          contentBox.innerHTML =
+            marked.parse(content || "");
+
+        } else {
+
+          message.innerHTML = `
+
+            <div class="message-content">
+              ${escapeHtml(content)}
+            </div>
+
+          `;
+
+        }
+
+        chatContent.appendChild(message);
+
+        chatBox.scrollTop =
+          chatBox.scrollHeight;
+
+        return message;
+
+      }
+
+
+      /* ================= ESCAPE HTML ================= */
+
+      function escapeHtml(text) {
+
+        const div =
+          document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+
+      }
+
+
+      /* ================= TYPING ================= */
+
+      function addTyping() {
+
+        const typing =
+          document.createElement("div");
+
+        typing.className =
+          "message ai";
+
+        typing.id =
+          "typingMessage";
+
+        typing.innerHTML = `
+
+          <div class="ai-avatar">
+            MI
+          </div>
+
+          <div class="message-content">
+
+            <div class="typing">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+          </div>
+
+        `;
+
+        chatContent.appendChild(typing);
+
+        chatBox.scrollTop =
+          chatBox.scrollHeight;
+
+      }
+
+
+      function removeTyping() {
+
+        const typing =
+          document.getElementById(
+            "typingMessage"
+          );
+
+        if (typing) {
+
+          typing.remove();
+
+        }
+
+      }
+
+
+      /* ================= SEND MESSAGE ================= */
+
+      async function sendMessage() {
+
+        const text =
+          messageInput.value.trim();
+
+        if (!text || isLoading) {
+
+          return;
+
+        }
+
+        isLoading = true;
+
+        updateSendButton();
+
+        messageInput.value = "";
+
+        messageInput.style.height =
+          "auto";
+
+        addMessage(
+          "user",
+          text
+        );
+
+        messages.push({
+          role: "user",
+          content: text
+        });
+
+        addTyping();
+
+        try {
+
+          const response =
+            await fetch(
+              `${API_BASE}/api/chat`,
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body: JSON.stringify({
+
+                  messages: messages,
+
+                  language:
+                    selectedLanguage
+
+                })
+
+              }
+            );
+
+          const data =
+            await response.json();
+
+          removeTyping();
+
+          if (!response.ok) {
+
+            throw new Error(
+              data.error ||
+              "Server error"
+            );
+
+          }
+
+          const reply =
+            data.reply ||
+            data.message ||
+            "Sorry, I could not generate a response.";
+
+          addMessage(
+            "ai",
+            reply
+          );
+
+          messages.push({
+            role: "assistant",
+            content: reply
+          });
+
+          saveCurrentChat();
+
+        } catch (error) {
+
+          removeTyping();
+
+          addMessage(
+            "ai",
+            `⚠️ **Error:** ${error.message}`
+          );
+
+          showToast(
+            "Unable to connect to MEWAT AI server"
+          );
+
+        } finally {
+
+          isLoading = false;
+
+          updateSendButton();
+
+        }
+
+      }
+            /* ================= CHAT HISTORY ================= */
+
+      function saveCurrentChat() {
+
+        if (!messages.length) {
+          return;
+        }
+
+        const firstUserMessage =
+          messages.find(
+            item => item.role === "user"
+          );
+
+        const title =
+          firstUserMessage
+            ? firstUserMessage.content
+                .slice(0, 45)
+            : "New Chat";
+
+        if (!currentChatId) {
+
+          currentChatId =
+            Date.now().toString();
+
+          chats.unshift({
+            id: currentChatId,
+            title: title,
+            messages: [...messages],
+            createdAt: Date.now()
+          });
+
+        } else {
+
+          const chat =
+            chats.find(
+              item =>
+                item.id === currentChatId
+            );
+
+          if (chat) {
+
+            chat.messages =
+              [...messages];
+
+            chat.title =
+              title;
+
+          }
+
+        }
+
+        saveChats();
+
+        renderHistory();
+
+      }
+
+
+      function renderHistory() {
+
+        chatList.innerHTML = "";
+
+        historyCount.textContent =
+          chats.length;
+
+        if (!chats.length) {
+
+          const empty =
+            document.createElement("div");
+
+          empty.style.cssText = `
+            padding:20px 10px;
+            color:var(--muted);
+            font-size:13px;
+            text-align:center;
+          `;
+
+          empty.textContent =
+            "No chats yet";
+
+          chatList.appendChild(empty);
+
+          return;
+
+        }
+
+
+        chats.forEach(chat => {
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "history-item";
+
+          if (
+            chat.id === currentChatId
+          ) {
+
+            item.classList.add("active");
+
+          }
+
+          const icon =
+            document.createElement("span");
+
+          icon.className =
+            "history-icon";
+
+          icon.textContent =
+            "💬";
+
+
+          const text =
+            document.createElement("span");
+
+          text.className =
+            "history-text";
+
+          text.textContent =
+            chat.title || "New Chat";
+
+
+          const deleteBtn =
+            document.createElement("button");
+
+          deleteBtn.className =
+            "history-delete";
+
+          deleteBtn.textContent =
+            "×";
+
+          deleteBtn.title =
+            "Delete chat";
+
+
+          item.appendChild(icon);
+
+          item.appendChild(text);
+
+          item.appendChild(deleteBtn);
+
+
+          text.addEventListener(
+            "click",
+            () => {
+
+              loadChat(chat.id);
+
+            }
+          );
+
+
+          icon.addEventListener(
+            "click",
+            () => {
+
+              loadChat(chat.id);
+
+            }
+          );
+
+
+          deleteBtn.addEventListener(
+            "click",
+            event => {
+
+              event.stopPropagation();
+
+              deleteChat(chat.id);
+
+            }
+          );
+
+
+          chatList.appendChild(item);
+
+        });
+
+      }
+
+
+      function loadChat(id) {
+
+        const chat =
+          chats.find(
+            item => item.id === id
+          );
+
+        if (!chat) {
+          return;
+        }
+
+        currentChatId = id;
+
+        messages =
+          [...(chat.messages || [])];
+
+        chatContent.innerHTML = "";
+
+        messages.forEach(message => {
+
+          if (
+            message.role === "user"
+          ) {
+
+            addMessage(
+              "user",
+              message.content
+            );
+
+          } else if (
+            message.role === "assistant"
+          ) {
+
+            addMessage(
+              "ai",
+              message.content
+            );
+
+          }
+
+        });
+
+        headerTitle.textContent =
+          chat.title || "MEWAT AI";
+
+        sidebar.classList.remove(
+          "open"
+        );
+
+        renderHistory();
+
+        chatBox.scrollTop =
+          chatBox.scrollHeight;
+
+      }
+
+
+      function deleteChat(id) {
+
+        chats =
+          chats.filter(
+            chat => chat.id !== id
+          );
+
+        saveChats();
+
+        if (
+          currentChatId === id
+        ) {
+
+          newChat();
+
+        }
+
+        renderHistory();
+
+      }
+
+
+      /* ================= CLEAR CHAT ================= */
+
+      clearChatBtn.addEventListener(
+        "click",
+        () => {
+
+          plusMenu.classList.remove(
+            "show"
+          );
+
+          newChat();
+
+          showToast(
+            "New chat started"
+          );
+
+        }
+      );
+
+
+      /* ================= LANGUAGE ================= */
+
+      languageSelect.addEventListener(
+        "change",
+        () => {
+
+          selectedLanguage =
+            languageSelect.value;
+
+          localStorage.setItem(
+            "mewat_ai_language",
+            selectedLanguage
+          );
+
+        }
+      );
+
+
+      /* ================= THEME ================= */
+
+      function applyTheme(theme) {
+
+        document.body.classList.remove(
+          "theme-two",
+          "light"
+        );
+
+        if (
+          theme === "theme-two"
+        ) {
+
+          document.body.classList.add(
+            "theme-two"
+          );
+
+        }
+
+        if (
+          theme === "light"
+        ) {
+
+          document.body.classList.add(
+            "light"
+          );
+
+        }
+
+        localStorage.setItem(
+          "mewat_ai_theme",
+          theme
+        );
+
+      }
+
+
+      themeButton.addEventListener(
+        "click",
+        () => {
+
+          themeModal.classList.add(
+            "show"
+          );
+
+        }
+      );
+
+
+      themeModalClose.addEventListener(
+        "click",
+        () => {
+
+          themeModal.classList.remove(
+            "show"
+          );
+
+        }
+      );
+
+
+      themeModal.addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target ===
+            themeModal
+          ) {
+
+            themeModal.classList.remove(
+              "show"
+            );
+
+          }
+
+        }
+      );
+
+
+      document
+        .querySelectorAll(".theme-option")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              applyTheme(
+                button.dataset.theme
+              );
+
+              themeModal.classList.remove(
+                "show"
+              );
+
+            }
+          );
+
+        });
+
+
+      darkModeButton.addEventListener(
+        "click",
+        () => {
+
+          const isLight =
+            document.body.classList.contains(
+              "light"
+            ) ||
+            document.body.classList.contains(
+              "theme-two"
+            );
+
+          if (isLight) {
+
+            applyTheme(
+              "default"
+            );
+
+          } else {
+
+            applyTheme(
+              "light"
+            );
+
+          }
+
+        }
+      );
+
+
+      /* ================= IMAGE UPLOAD ================= */
+
+      uploadImageBtn.addEventListener(
+        "click",
+        () => {
+
+          plusMenu.classList.remove(
+            "show"
+          );
+
+          imageInput.click();
+
+        }
+      );
+
+
+      imageInput.addEventListener(
+        "change",
+        () => {
+
+          const file =
+            imageInput.files[0];
+
+          if (!file) {
+            return;
+          }
+
+          messageInput.value =
+            `I uploaded an image named "${file.name}". Please help me analyze it.`;
+
+          updateSendButton();
+
+          showToast(
+            "Image selected"
+          );
+
+        }
+      );
+
+
+      /* ================= FILE UPLOAD ================= */
+
+      uploadFileBtn.addEventListener(
+        "click",
+        () => {
+
+          plusMenu.classList.remove(
+            "show"
+          );
+
+          fileInput.click();
+
+        }
+      );
+
+
+      fileInput.addEventListener(
+        "change",
+        () => {
+
+          const file =
+            fileInput.files[0];
+
+          if (!file) {
+            return;
+          }
+
+          messageInput.value =
+            `I uploaded a file named "${file.name}". Please help me with it.`;
+
+          updateSendButton();
+
+          showToast(
+            "File selected"
+          );
+
+        }
+      );
+
+
+      /* ================= VOICE INPUT ================= */
+
+      let recognition = null;
+
+      const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+      if (SpeechRecognition) {
+
+        recognition =
+          new SpeechRecognition();
+
+        recognition.continuous =
+          false;
+
+        recognition.interimResults =
+          false;
+
+        recognition.lang =
+          "hi-IN";
+
+
+        recognition.onstart =
+          () => {
+
+            micBtn.textContent =
+              "⏹️";
+
+            showToast(
+              "Listening..."
+            );
+
+          };
+
+
+        recognition.onresult =
+          event => {
+
+            const transcript =
+              event.results[0][0]
+                .transcript;
+
+            messageInput.value =
+              transcript;
+
+            updateSendButton();
+
+          };
+
+
+        recognition.onerror =
+          () => {
+
+            showToast(
+              "Voice input failed"
+            );
+
+          };
+
+
+        recognition.onend =
+          () => {
+
+            micBtn.textContent =
+              "🎙️";
+
+          };
+
+
+        micBtn.addEventListener(
+          "click",
+          () => {
+
+            try {
+
+              recognition.lang =
+                selectedLanguage ===
+                "auto"
+                  ? "hi-IN"
+                  : selectedLanguage;
+
+              recognition.start();
+
+            } catch (error) {
+
+              showToast(
+                "Microphone is already active"
+              );
+
+            }
+
+          }
+        );
+
+      } else {
+
+        micBtn.addEventListener(
+          "click",
+          () => {
+
+            showToast(
+              "Voice input is not supported in this browser"
+            );
+
+          }
+        );
+
+      }
+
+
+      /* ================= CLOSE MOBILE SIDEBAR ================= */
+
+      chatBox.addEventListener(
+        "click",
+        () => {
+
+          sidebar.classList.remove(
+            "open"
+          );
+
+        }
+      );
+
+
+      /* ================= LOAD SETTINGS ================= */
+
+      function loadSettings() {
+
+        const savedTheme =
+          localStorage.getItem(
+            "mewat_ai_theme"
+          );
+
+        if (savedTheme) {
+
+          applyTheme(
+            savedTheme
+          );
+
+        }
+
+
+        const savedLanguage =
+          localStorage.getItem(
+            "mewat_ai_language"
+          );
+
+        if (savedLanguage) {
+
+          selectedLanguage =
+            savedLanguage;
+
+          languageSelect.value =
+            savedLanguage;
+
+        }
+
+      }
+
+
+      /* ================= INITIALIZE ================= */
+
+      loadSettings();
+
+      loadStorage();
+
+      updateSendButton();
+
+
+      /* =====================================================
+         MEWAT AI IDENTITY
+
+         Founder:
+         AASIF FAJRUDDIN
+
+         App:
+         MEWAT AI
+
+         Logo:
+         MI
+      ===================================================== */
+
+    </script>
+
+  </main>
+
+</body>
+</html>

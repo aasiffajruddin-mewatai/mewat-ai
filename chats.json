@@ -1,0 +1,673 @@
+[
+  {
+    "id": "muks49jj-aaf3356bee",
+    "title": "yadi london me din ke 12 baje to 74 deeg...",
+    "createdAt": "2026-09-28T05:00:31.951Z",
+    "updatedAt": "2026-09-28T06:40:33.982Z",
+    "messages": [
+      {
+        "id": "muks4b9i-f102532a62",
+        "role": "user",
+        "content": "yadi london me din ke 12 baje to 74 deegri islamabad or 75 deegri new york me kya samay hoga",
+        "createdAt": "2026-09-28T05:00:34.182Z"
+      },
+      {
+        "id": "muks4b9i-f9cb449e1f",
+        "role": "assistant",
+        "content": "अगर 12 बजे दोपहर (GMT/UTC 0) लंदन में हैं, तो समय का अंतर निम्नानुसार होगा:\n\n| शहर | समय क्षेत्र (मानक) | 12 बजे GMT के बाद का समय |\n|------|-------------------|---------------------------|\n| **इस्तांबुल (इस्तांबुल)** | UTC +5 | 12 बजे + 5 घंटे → **17:00 (5 शाम)** |\n| **न्यू यॉर्क** | UTC -5 | 12 बजे – 5 घंटे → **07:00 (7 सुबह)** |\n\n> **नोट**  \n> * यदि ग्रीष्मकालीन समय (Daylight Saving) लागू है, तो समय में ±1 घंटा का अंतर हो सकता है।  \n> * ऊपर दिया गया समय अनुमानित है; वास्तविक समय स्थानीय समय-क्षेत्र के अनुसार थोड़ा बदल सकता है।  \n\nइसलिए, लंदन में जब 12 बजे दोपहर हो, तो इस्तांबुल में लगभग **5 शाम** और न्यू यॉर्क में लगभग **7 सुबह** होगी।",
+        "createdAt": "2026-09-28T05:00:34.182Z"
+      },
+      {
+        "role": "user",
+        "content": "hii",
+        "timestamp": "2026-09-28T06:17:09.667Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नमस्ते! मैं आपकी कैसे सहायता कर सकता हूँ?",
+        "timestamp": "2026-09-28T06:17:09.667Z"
+      },
+      {
+        "role": "user",
+        "content": "hii",
+        "timestamp": "2026-09-28T06:37:49.885Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नमस्ते! मैं आपकी कैसे सहायता कर सकता हूँ?",
+        "timestamp": "2026-09-28T06:37:49.885Z"
+      },
+      {
+        "role": "user",
+        "content": "mera name aasif hai",
+        "timestamp": "2026-09-28T06:38:04.722Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नमस्ते, Aasif! आपसे मिलकर खुशी हुई। मैं आपकी कैसे मदद कर सकता हूँ?",
+        "timestamp": "2026-09-28T06:38:04.722Z"
+      },
+      {
+        "role": "user",
+        "content": "btao mera name kiya hai",
+        "timestamp": "2026-09-28T06:38:25.022Z"
+      },
+      {
+        "role": "assistant",
+        "content": "आपका नाम **आसिफ** है।",
+        "timestamp": "2026-09-28T06:38:25.022Z"
+      },
+      {
+        "role": "user",
+        "content": "thanks",
+        "timestamp": "2026-09-28T06:38:39.353Z"
+      },
+      {
+        "role": "assistant",
+        "content": "You’re welcome! If you have any more questions, just let me know.",
+        "timestamp": "2026-09-28T06:38:39.353Z"
+      },
+      {
+        "role": "user",
+        "content": "how are you",
+        "timestamp": "2026-09-28T06:39:05.663Z"
+      },
+      {
+        "role": "assistant",
+        "content": "I’m doing great—thanks for asking! How can I help you today?",
+        "timestamp": "2026-09-28T06:39:05.663Z"
+      },
+      {
+        "role": "user",
+        "content": "I uploaded an image named \"IMG-20250219-WA0033.jpg\". Please help me analyze it.",
+        "timestamp": "2026-09-28T06:40:21.948Z"
+      },
+      {
+        "role": "assistant",
+        "content": "I can help you understand what’s in the photo, but I don’t have the ability to view images directly.  \nIf you can describe what you see—such as people, objects, text, colors, or any details you notice—I’ll gladly help you interpret or analyze it.  \n\nAlternatively, you can use an OCR or image‑analysis tool (e.g., Google Lens, Microsoft OneNote, or an online image‑recognition service) to extract text or identify objects, and then share those results with me. Let me know how you’d like to proceed!",
+        "timestamp": "2026-09-28T06:40:21.948Z"
+      },
+      {
+        "role": "user",
+        "content": "in hindi",
+        "timestamp": "2026-09-28T06:40:33.982Z"
+      },
+      {
+        "role": "assistant",
+        "content": "मुझे खेद है, पर मैं फ़ाइलें या चित्र सीधे नहीं देख सकता।  \nआप जो तस्वीर अपलोड की है, उसे मैं देख नहीं सकता, इसलिए मैं उसकी सामग्री का विश्लेषण नहीं कर सकता।  \n\nआप निम्न तरीकों से अपनी तस्वीर का विश्लेषण कर सकते हैं और फिर मुझे बताएं:\n\n| तरीका | कैसे करें | क्या मिलेगा |\n|--------|-----------|-----------|\n| **ऑनलाइन OCR (ऑप्टिकल कैरेक्टर रिकग्निशन)** | <https://www.onlineocr.net/> या <https://www.free-ocr.com/> पर जाएं, फ़ाइल अपलोड करें, और “Convert” पर क्लिक करें। | फ़ोटो में मौजूद किसी भी लिखित पाठ को टेक्स्ट के रूप में मिलेगा। |\n| **Google Lens** | Android या iOS पर Google Lens ऐप खोलें, कैमरे से फ़ोटो चुनें या अपलोड करें। | ऑब्जेक्ट पहचान, पाठ, स्थान, या उत्पाद की जानकारी। |\n| **Microsoft OneNote** | OneNote में फ़ोटो जोड़ें, फिर “Copy Text from Picture” विकल्प चुनें। | फ़ोटो में लिखे शब्दों का टेक्स्ट। |\n| **फ़ोटो का मैनुअल विवरण** | फ़ोटो को ध्यान से देखें और जो कुछ भी दिख रहा है (लोग, वस्तुएँ, रंग, पृष्ठभूमि, कोई लिखा हुआ) लिखकर बताएं। | आप स्वयं विश्लेषण कर सकते हैं। |\n\n**आप क्या कर सकते हैं?**\n\n1. **फ़ोटो का संक्षिप्त विवरण**:  \n   - फ़ोटो में कौन या क्या है?  \n   - क्या लिखा हुआ है?  \n   - रंग, आकार, पृष्ठभूमि कैसी है?  \n\n2. **OCR या Lens से प्राप्त टेक्स्ट**:  \n   - फ़ोटो में लिखे शब्दों की सूची।  \n\n3. **किसी विशेष प्रश्न**:  \n   - यदि आप किसी विशिष्ट हिस्से या वस्तु के बारे में पूछना चाहते हैं, तो उसे स्पष्ट रूप से बताएं।  \n\nइन सूचनाओं के आधार पर मैं आपको विश्लेषण, व्याख्या या आगे की सहायता प्रदान कर सकता हूँ। कृपया विवरण साझा करें!",
+        "timestamp": "2026-09-28T06:40:33.982Z"
+      }
+    ]
+  },
+  {
+    "id": "muks0c91-13f02558fa",
+    "title": "shetrfal ki drishti se vishva ka teesra ...",
+    "createdAt": "2026-09-28T04:57:28.837Z",
+    "updatedAt": "2026-09-28T04:57:29.765Z",
+    "messages": [
+      {
+        "id": "muks0cyt-bdb1689fac",
+        "role": "user",
+        "content": "shetrfal ki drishti se vishva ka teesra sabse bada mahadwip konsa h",
+        "createdAt": "2026-09-28T04:57:29.765Z"
+      },
+      {
+        "id": "muks0cyt-28fd2c209b",
+        "role": "assistant",
+        "content": "Shetrfal (geographical) nazariye se vishva ka teesra sabse bada mahadwip **North America** hai.  \n\n- **Asia** – sabse bada (≈ 44.6 million km²)  \n- **Africa** – doosra (≈ 30.4 million km²)  \n- **North America** – teesra (≈ 24.7 million km²)  \n\nNorth America mein Canada, United States, Mexico, aur bahut se chhote desh aur islands shamil hain.",
+        "createdAt": "2026-09-28T04:57:29.765Z"
+      }
+    ]
+  },
+  {
+    "id": "mukry0zo-cde0846dbd",
+    "title": "in hindi",
+    "createdAt": "2026-09-28T04:55:40.932Z",
+    "updatedAt": "2026-09-28T04:55:41.936Z",
+    "messages": [
+      {
+        "id": "mukry1rj-e7d9b66416",
+        "role": "user",
+        "content": "in hindi",
+        "createdAt": "2026-09-28T04:55:41.935Z"
+      },
+      {
+        "id": "mukry1rj-9ff4123e5d",
+        "role": "assistant",
+        "content": "बिल्कुल! आप किस विषय पर जानकारी या सहायता चाहते हैं? कृपया बताइए।",
+        "createdAt": "2026-09-28T04:55:41.936Z"
+      }
+    ]
+  },
+  {
+    "id": "mukrxeg4-ef46e14191",
+    "title": "hii",
+    "createdAt": "2026-09-28T04:55:11.716Z",
+    "updatedAt": "2026-09-28T04:55:12.445Z",
+    "messages": [
+      {
+        "id": "mukrxf0d-de14591efc",
+        "role": "user",
+        "content": "hii",
+        "createdAt": "2026-09-28T04:55:12.445Z"
+      },
+      {
+        "id": "mukrxf0d-5638712d8d",
+        "role": "assistant",
+        "content": "Hey there! How can I help you today?",
+        "createdAt": "2026-09-28T04:55:12.445Z"
+      }
+    ]
+  },
+  {
+    "id": "mukrv1sl-497e122271",
+    "title": "hello",
+    "createdAt": "2026-09-28T04:53:22.005Z",
+    "updatedAt": "2026-09-28T04:53:22.676Z",
+    "messages": [
+      {
+        "id": "mukrv2b8-3acabe8db1",
+        "role": "user",
+        "content": "hello",
+        "createdAt": "2026-09-28T04:53:22.676Z"
+      },
+      {
+        "id": "mukrv2b8-e837915400",
+        "role": "assistant",
+        "content": "Hey there! How’s it going?",
+        "createdAt": "2026-09-28T04:53:22.676Z"
+      }
+    ]
+  },
+  {
+    "id": "mukrt5x0-719dad10d8",
+    "title": "hii",
+    "createdAt": "2026-09-28T04:51:54.036Z",
+    "updatedAt": "2026-09-28T04:51:54.816Z",
+    "messages": [
+      {
+        "id": "mukrt6io-cc57eed6a8",
+        "role": "user",
+        "content": "hii",
+        "createdAt": "2026-09-28T04:51:54.816Z"
+      },
+      {
+        "id": "mukrt6io-68096ecd58",
+        "role": "assistant",
+        "content": "Hey there! How can I help you today?",
+        "createdAt": "2026-09-28T04:51:54.816Z"
+      }
+    ]
+  },
+  {
+    "id": "mukrsch6-913c796f3a",
+    "title": "hii",
+    "createdAt": "2026-09-28T04:51:15.882Z",
+    "updatedAt": "2026-09-28T04:51:17.234Z",
+    "messages": [
+      {
+        "id": "mukrsdiq-2fcf6534cd",
+        "role": "user",
+        "content": "hii",
+        "createdAt": "2026-09-28T04:51:17.234Z"
+      },
+      {
+        "id": "mukrsdiq-b5b68095dd",
+        "role": "assistant",
+        "content": "Hi there! How can I help you today?",
+        "createdAt": "2026-09-28T04:51:17.234Z"
+      }
+    ]
+  },
+  {
+    "id": "mukrs3nf-9002541e0c",
+    "title": "hii",
+    "createdAt": "2026-09-28T04:51:04.443Z",
+    "updatedAt": "2026-09-28T04:51:05.687Z",
+    "messages": [
+      {
+        "id": "mukrs4lz-4a2ae66517",
+        "role": "user",
+        "content": "hii",
+        "createdAt": "2026-09-28T04:51:05.687Z"
+      },
+      {
+        "id": "mukrs4lz-660deab24d",
+        "role": "assistant",
+        "content": "Hello! How can I help you today?",
+        "createdAt": "2026-09-28T04:51:05.687Z"
+      }
+    ]
+  },
+  {
+    "id": "chat-1790528216297-rb6d01",
+    "title": "hello",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello",
+        "timestamp": "2026-09-27T17:01:53.087Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?",
+        "timestamp": "2026-09-27T17:01:53.087Z"
+      },
+      {
+        "role": "user",
+        "content": "mera name aasif hai tumhara name kiya hai",
+        "timestamp": "2026-09-27T17:02:36.683Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नमस्ते असिफ! मेरा नाम ORVEXA AI है। आपसे मिलकर खुशी हुई!",
+        "timestamp": "2026-09-27T17:02:36.683Z"
+      },
+      {
+        "role": "user",
+        "content": "mene tumhe bnaya hai or ab me tumhe test kar rha hu",
+        "timestamp": "2026-09-27T17:03:18.003Z"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं तैयार हूँ! आप क्या पूछना या जाँचना चाहेंगे?",
+        "timestamp": "2026-09-27T17:03:18.003Z"
+      },
+      {
+        "role": "user",
+        "content": "mera name kiya hai",
+        "timestamp": "2026-09-27T17:03:35.922Z"
+      },
+      {
+        "role": "assistant",
+        "content": "आपका नाम असिफ है।",
+        "timestamp": "2026-09-27T17:03:35.922Z"
+      }
+    ],
+    "createdAt": "2026-09-27T16:56:56.297Z",
+    "updatedAt": "2026-09-27T17:03:35.922Z"
+  },
+  {
+    "id": "chat-1790528624238-354cnu",
+    "title": "New Chat",
+    "messages": [],
+    "createdAt": "2026-09-27T17:03:44.238Z",
+    "updatedAt": "2026-09-27T17:03:44.238Z"
+  },
+  {
+    "id": "chat-1790528625947-yiutn4",
+    "title": "mera name kiya hai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "mera name kiya hai",
+        "timestamp": "2026-09-27T17:08:51.902Z"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं नहीं जानता कि आपका नाम क्या है। क्या आप अपना नाम बता सकते हैं?",
+        "timestamp": "2026-09-27T17:08:51.902Z"
+      },
+      {
+        "role": "user",
+        "content": "hi",
+        "timestamp": "2026-09-27T17:09:16.085Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?",
+        "timestamp": "2026-09-27T17:09:16.085Z"
+      }
+    ],
+    "createdAt": "2026-09-27T17:03:45.947Z",
+    "updatedAt": "2026-09-27T17:09:16.085Z"
+  },
+  {
+    "id": "chat-1790564656425-p78yag",
+    "title": "good morning dost",
+    "messages": [
+      {
+        "role": "user",
+        "content": "good morning dost",
+        "timestamp": "2026-09-28T03:04:34.041Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Good morning! How can I help you today?",
+        "timestamp": "2026-09-28T03:04:34.041Z"
+      }
+    ],
+    "createdAt": "2026-09-28T03:04:16.425Z",
+    "updatedAt": "2026-09-28T03:04:34.041Z"
+  },
+  {
+    "id": "chat-1790564682746-b2fdx5",
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii",
+        "timestamp": "2026-09-28T03:28:37.879Z"
+      },
+      {
+        "role": "assistant",
+        "content": "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "timestamp": "2026-09-28T03:28:37.879Z"
+      },
+      {
+        "role": "user",
+        "content": "in english",
+        "timestamp": "2026-09-28T03:28:54.244Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure thing! How can I assist you today?",
+        "timestamp": "2026-09-28T03:28:54.244Z"
+      },
+      {
+        "role": "user",
+        "content": "how are you",
+        "timestamp": "2026-09-28T03:29:14.012Z"
+      },
+      {
+        "role": "assistant",
+        "content": "I’m doing great—thanks for asking! How about you?",
+        "timestamp": "2026-09-28T03:29:14.012Z"
+      }
+    ],
+    "createdAt": "2026-09-28T03:04:42.746Z",
+    "updatedAt": "2026-09-28T03:29:14.012Z"
+  },
+  {
+    "id": "chat-1790566166830-g4n3rg",
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii",
+        "timestamp": "2026-09-28T03:35:13.031Z"
+      },
+      {
+        "role": "assistant",
+        "content": "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "timestamp": "2026-09-28T03:35:13.031Z"
+      },
+      {
+        "role": "user",
+        "content": "hello in english",
+        "timestamp": "2026-09-28T03:35:25.093Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I assist you today?",
+        "timestamp": "2026-09-28T03:35:25.093Z"
+      }
+    ],
+    "createdAt": "2026-09-28T03:29:26.830Z",
+    "updatedAt": "2026-09-28T03:35:25.093Z"
+  },
+  {
+    "id": "chat-1790569613806",
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii",
+        "timestamp": "2026-09-28T04:26:55.403Z"
+      },
+      {
+        "role": "assistant",
+        "content": "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "timestamp": "2026-09-28T04:26:55.403Z"
+      }
+    ],
+    "createdAt": "2026-09-28T04:26:53.852Z",
+    "updatedAt": "2026-09-28T04:26:55.403Z"
+  },
+  {
+    "id": "chat-1790569633923",
+    "title": "hello",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello",
+        "timestamp": "2026-09-28T04:27:15.767Z"
+      },
+      {
+        "role": "assistant",
+        "content": "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "timestamp": "2026-09-28T04:27:15.767Z"
+      }
+    ],
+    "createdAt": "2026-09-28T04:27:13.945Z",
+    "updatedAt": "2026-09-28T04:27:15.767Z"
+  },
+  {
+    "id": "chat-1790569671743",
+    "title": "Help me understand this topic step by st...",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Help me understand this topic step by step.",
+        "timestamp": "2026-09-28T04:27:53.040Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure thing! Could you let me know which topic you’d like to explore step by step? Once I know the subject, I’ll break it down into clear, manageable parts for you.",
+        "timestamp": "2026-09-28T04:27:53.040Z"
+      }
+    ],
+    "createdAt": "2026-09-28T04:27:51.753Z",
+    "updatedAt": "2026-09-28T04:27:53.040Z"
+  },
+  {
+    "id": "chat-1790569813812",
+    "title": "hii",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hii",
+        "timestamp": "2026-09-28T04:30:14.655Z"
+      },
+      {
+        "role": "assistant",
+        "content": "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "timestamp": "2026-09-28T04:30:14.655Z"
+      },
+      {
+        "role": "user",
+        "content": "in hindi",
+        "timestamp": "2026-09-28T04:30:29.506Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नमस्ते! मैं आपकी किस प्रकार सहायता कर सकता हूँ?",
+        "timestamp": "2026-09-28T04:30:29.506Z"
+      }
+    ],
+    "createdAt": "2026-09-28T04:30:13.819Z",
+    "updatedAt": "2026-09-28T04:30:29.506Z"
+  },
+  {
+    "id": "chat-1790577668367-8h9abt",
+    "title": "tumhara founder kon hai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tumhara founder kon hai",
+        "timestamp": "2026-09-28T06:42:03.541Z"
+      },
+      {
+        "role": "assistant",
+        "content": "आपका फ़ाउंडर **बिलाल वारिस** हैं, जो ORVEXA AI के CEO भी हैं【1†L43-L45】.",
+        "timestamp": "2026-09-28T06:42:03.541Z"
+      },
+      {
+        "role": "user",
+        "content": "tumko mene bnaya hai",
+        "timestamp": "2026-09-28T06:42:39.287Z"
+      },
+      {
+        "role": "assistant",
+        "content": "धन्यवाद! मैं आपकी सहायता के लिए यहाँ हूँ। यदि आपको किसी भी विषय पर मदद चाहिए, तो बताइए।",
+        "timestamp": "2026-09-28T06:42:39.287Z"
+      },
+      {
+        "role": "user",
+        "content": "aasif ne bnaya hai orvexa ai ko",
+        "timestamp": "2026-09-28T06:43:28.183Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नहीं, **Orvexa AI** का संस्थापक बिलाल वारिस हैं। वे ही कंपनी के सीईओ भी हैं, जैसा कि कंपनी की वेबसाइट पर स्पष्ट रूप से लिखा है【13†L41-L44】। इसलिए “आसिफ” ने Orvexa AI नहीं बनाया।",
+        "timestamp": "2026-09-28T06:43:28.183Z"
+      }
+    ],
+    "createdAt": "2026-09-28T06:41:08.367Z",
+    "updatedAt": "2026-09-28T06:43:28.183Z"
+  },
+  {
+    "id": "chat-1790581120026-rozr09",
+    "title": "hello",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello",
+        "timestamp": "2026-09-28T07:38:40.857Z"
+      },
+      {
+        "role": "assistant",
+        "content": "नमस्ते! मैं MEWAT AI हूँ। आपको किसी भी जानकारी या सहायता की ज़रूरत हो, तो बताइए।",
+        "timestamp": "2026-09-28T07:38:40.857Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:38:40.026Z",
+    "updatedAt": "2026-09-28T07:38:40.857Z"
+  },
+  {
+    "id": "chat-1790581241193-t8vx6l",
+    "title": "kese ho dost",
+    "messages": [
+      {
+        "role": "user",
+        "content": "kese ho dost",
+        "timestamp": "2026-09-28T07:40:42.081Z"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं अच्छा हूँ, धन्यवाद! आप कैसे हैं, दोस्त?",
+        "timestamp": "2026-09-28T07:40:42.081Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:40:41.192Z",
+    "updatedAt": "2026-09-28T07:40:42.081Z"
+  },
+  {
+    "id": "chat-1790581264761-jh0tm0",
+    "title": "kon ho tum",
+    "messages": [
+      {
+        "role": "user",
+        "content": "kon ho tum",
+        "timestamp": "2026-09-28T07:41:05.969Z"
+      },
+      {
+        "role": "assistant",
+        "content": "मैं MEWAT AI हूँ।",
+        "timestamp": "2026-09-28T07:41:05.969Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:41:04.761Z",
+    "updatedAt": "2026-09-28T07:41:05.969Z"
+  },
+  {
+    "id": "chat-1790581277701-xbyvw3",
+    "title": "tumko kisne bnaya hai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tumko kisne bnaya hai",
+        "timestamp": "2026-09-28T07:41:18.479Z"
+      },
+      {
+        "role": "assistant",
+        "content": "\"The founder of MEWAT AI is AASIF FAJRUDDIN.\"",
+        "timestamp": "2026-09-28T07:41:18.479Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:41:17.701Z",
+    "updatedAt": "2026-09-28T07:41:18.479Z"
+  },
+  {
+    "id": "chat-1790581297244-4ovbqr",
+    "title": "in hindi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "in hindi",
+        "timestamp": "2026-09-28T07:41:38.307Z"
+      },
+      {
+        "role": "assistant",
+        "content": "मेवाट एआई का संस्थापक असिफ फैजुद्दिन हैं।",
+        "timestamp": "2026-09-28T07:41:38.307Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:41:37.244Z",
+    "updatedAt": "2026-09-28T07:41:38.307Z"
+  },
+  {
+    "id": "chat-1790581332685-bl1c3u",
+    "title": "aasif fajruddin kon hai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "aasif fajruddin kon hai",
+        "timestamp": "2026-09-28T07:42:13.580Z"
+      },
+      {
+        "role": "assistant",
+        "content": "असिफ फैजुद्दिन मेवाट एआई के संस्थापक हैं।",
+        "timestamp": "2026-09-28T07:42:13.580Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:42:12.685Z",
+    "updatedAt": "2026-09-28T07:42:13.580Z"
+  },
+  {
+    "id": "chat-1790581365392-j4yhrs",
+    "title": "duniya me kul kitne desh hai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "duniya me kul kitne desh hai",
+        "timestamp": "2026-09-28T07:42:46.119Z"
+      },
+      {
+        "role": "assistant",
+        "content": "दुनिया में कुल **195** मान्यता प्राप्त स्वतंत्र देश हैं।  \n- 193 देश संयुक्त राष्ट्र (UN) के सदस्य हैं।  \n- 2 देश (पवित्र रोमन कैथोलिक चर्च – वेटिकन सिटी और फिलिस्तीन) संयुक्त राष्ट्र के निरीक्षक (observer) राज्य हैं।  \n\nयह संख्या अंतरराष्ट्रीय मान्यताओं पर आधारित है और समय के साथ राजनीतिक परिवर्तनों के अनुसार बदल सकती है।",
+        "timestamp": "2026-09-28T07:42:46.119Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:42:45.392Z",
+    "updatedAt": "2026-09-28T07:42:46.119Z"
+  },
+  {
+    "id": "chat-1790581506660-v6zfe3",
+    "title": "bharat me mewat kha par hai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "bharat me mewat kha par hai",
+        "timestamp": "2026-09-28T07:45:08.192Z"
+      },
+      {
+        "role": "assistant",
+        "content": "**मेवाट (Mewat)** भारत के दक्षिण‑पूर्वी हिस्से में स्थित एक ऐतिहासिक और सांस्कृतिक क्षेत्र है। यह मुख्यतः दो राज्यों के हिस्सों में फैला हुआ है:\n\n| राज्य | प्रमुख जिलों/कस्बों के नाम |\n|-------|--------------------------|\n| **हरियाणा** | नूह (Nuh) जिला (पूर्व में नूह-नुमा), फरीदाबाद के पास |\n| **राजस्थान** | अलवर (Alwar) जिला, सूरत (Sultanpur) और राजनपुर (Rajanpur) के आसपास के क्षेत्र |\n\n### मुख्य बिंदु\n- **भौगोलिक स्थिति**: मेवाट क्षेत्र हरियाणा के पश्चिमी भाग और राजस्थान के पूर्वी भाग में स्थित है, जो पंजाब और गुजरात के बीच की सीमा पर है।\n- **भाषा और संस्कृति**: यहाँ के लोग मुख्यतः “मेवाटी” बोली बोलते हैं, जो पंजाबी और मारवाड़ी के मिश्रण के समान है। सांस्कृतिक रूप से यह क्षेत्र पंजाबी, मारवाड़ी और हरियाणवी परंपराओं का संगम है।\n- **इतिहास**: मेवाट एक प्राचीन क्षेत्र है, जिसे 17वीं शताब्दी में मुहम्मद शेख के नेतृत्व में मावाट राजवंश ने शासित किया था। बाद में यह क्षेत्र ब्रिटिश भारत के तहत राजस्थानी राजवंशों और फिर स्वतंत्र भारत के बाद हरियाणा और राजस्थान के हिस्से बन गया।\n\nयदि आप मेवाट क्षेत्र का दौरा करना चाहते हैं, तो नूह (Nuh) और अलवर (Alwar) के मुख्य शहरों से शुरू करना अच्छा रहेगा, जहाँ आप स्थानीय संस्कृति, खानपान और ऐतिहासिक स्थल देख सकते हैं।",
+        "timestamp": "2026-09-28T07:45:08.192Z"
+      }
+    ],
+    "createdAt": "2026-09-28T07:45:06.660Z",
+    "updatedAt": "2026-09-28T07:45:08.192Z"
+  }
+]
